@@ -96,11 +96,11 @@ class KeyManagerTests(TestCase):
 
 
     def testSecret(self):
-        self.mgr[u"_system"].secret=marker
+        self.mgr[u"_system"].current=marker
         self.failUnless(self.mgr.secret() is marker)
 
     def testSecretGivenRing(self):
-        self.mgr[u"one"].secret=marker
+        self.mgr[u"one"].current=marker
         self.failUnless(self.mgr.secret(u"one") is marker)
 
     def testSecretUnknownRing(self):

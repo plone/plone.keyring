@@ -34,5 +34,5 @@ class KeyManager(SampleContainer):
 
 
     def secret(self, ring=u"_system"):
-        return self[ring].secret
+        return self[ring].current
 
