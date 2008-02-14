@@ -6,27 +6,22 @@ from persistent.mapping import PersistentMapping
 from zope.interface.verify import verifyClass
 from plone.keyring.interfaces import IKeyManager
 from plone.keyring.keymanager import KeyManager
+from plone.keyring.keyring import Keyring
 
 
 marker=[]
-
-class MockRing:
-    rotated=False
-    cleared=False
-    def clear(self):
-        self.cleared=True
-    def rotate(self):
-        self.rotated=True
-
 
 
 class KeyManagerTests(TestCase):
     def setUp(self):
         self.mgr=KeyManager()
         del self.mgr[u"_system"]
-        self.mgr[u"_system"]=MockRing()
-        self.mgr[u"one"]=MockRing()
-        self.mgr[u"two"]=MockRing()
+        self.mgr[u"_system"]=Keyring()
+        self.mgr[u"_system"].rotate()
+        self.mgr[u"one"]=Keyring()
+        self.mgr[u"one"].rotate()
+        self.mgr[u"two"]=Keyring()
+        self.mgr[u"two"].rotate()
 
 
     def testInterface(self):
@@ -47,23 +42,23 @@ class KeyManagerTests(TestCase):
 
     def testClear(self):
         self.mgr.clear()
-        self.assertEqual(self.mgr[u"_system"].cleared, True)
-        self.assertEqual(self.mgr[u"one"].cleared, False)
-        self.assertEqual(self.mgr[u"two"].cleared, False)
+        self.assertEqual(set(self.mgr[u"_system"]), set([None]))
+        self.assertNotEqual(set(self.mgr[u"one"]), set([None]))
+        self.assertNotEqual(set(self.mgr[u"two"]), set([None]))
 
 
     def testClearGivenRing(self):
         self.mgr.clear(u"one")
-        self.assertEqual(self.mgr[u"_system"].cleared, False)
-        self.assertEqual(self.mgr[u"one"].cleared, True)
-        self.assertEqual(self.mgr[u"two"].cleared, False)
+        self.assertNotEqual(set(self.mgr[u"_system"]), set([None]))
+        self.assertEqual(set(self.mgr[u"one"]), set([None]))
+        self.assertNotEqual(set(self.mgr[u"two"]), set([None]))
 
 
     def testClearAll(self):
         self.mgr.clear(None)
-        self.assertEqual(self.mgr[u"_system"].cleared, True)
-        self.assertEqual(self.mgr[u"one"].cleared, True)
-        self.assertEqual(self.mgr[u"two"].cleared, True)
+        self.assertEqual(set(self.mgr[u"_system"]), set([None]))
+        self.assertEqual(set(self.mgr[u"one"]), set([None]))
+        self.assertEqual(set(self.mgr[u"two"]), set([None]))
 
 
     def testClearUnknownRing(self):
@@ -71,24 +66,42 @@ class KeyManagerTests(TestCase):
 
 
     def testRotate(self):
+        current_sys = self.mgr[u"_system"].current
+        current_one = self.mgr[u"one"].current
+        current_two = self.mgr[u"two"].current
         self.mgr.rotate()
-        self.assertEqual(self.mgr[u"_system"].rotated, True)
-        self.assertEqual(self.mgr[u"one"].rotated, False)
-        self.assertEqual(self.mgr[u"two"].rotated, False)
+        self.assertNotEqual(self.mgr[u"_system"].current, current_sys)
+        self.assertEqual(self.mgr[u"_system"][1], current_sys)
+        self.assertEqual(self.mgr[u"one"].current, current_one)
+        self.assertEqual(self.mgr[u"one"][1], None)
+        self.assertEqual(self.mgr[u"two"].current, current_two)
+        self.assertEqual(self.mgr[u"two"][1], None)
 
 
     def testRotateGivenRing(self):
+        current_sys = self.mgr[u"_system"].current
+        current_one = self.mgr[u"one"].current
+        current_two = self.mgr[u"two"].current
         self.mgr.rotate(u"one")
-        self.assertEqual(self.mgr[u"_system"].rotated, False)
-        self.assertEqual(self.mgr[u"one"].rotated, True)
-        self.assertEqual(self.mgr[u"two"].rotated, False)
+        self.assertEqual(self.mgr[u"_system"].current, current_sys)
+        self.assertEqual(self.mgr[u"_system"][1], None)
+        self.assertNotEqual(self.mgr[u"one"].current, current_one)
+        self.assertEqual(self.mgr[u"one"][1], current_one)
+        self.assertEqual(self.mgr[u"two"].current, current_two)
+        self.assertEqual(self.mgr[u"two"][1], None)
 
 
     def testRotateAll(self):
+        current_sys = self.mgr[u"_system"].current
+        current_one = self.mgr[u"one"].current
+        current_two = self.mgr[u"two"].current
         self.mgr.rotate(None)
-        self.assertEqual(self.mgr[u"_system"].rotated, True)
-        self.assertEqual(self.mgr[u"one"].rotated, True)
-        self.assertEqual(self.mgr[u"two"].rotated, True)
+        self.assertNotEqual(self.mgr[u"_system"].current, current_sys)
+        self.assertEqual(self.mgr[u"_system"][1], current_sys)
+        self.assertNotEqual(self.mgr[u"one"].current, current_one)
+        self.assertEqual(self.mgr[u"one"][1], current_one)
+        self.assertNotEqual(self.mgr[u"two"].current, current_two)
+        self.assertEqual(self.mgr[u"two"][1], current_two)
 
 
     def testRotateUnknownRing(self):
@@ -96,11 +109,11 @@ class KeyManagerTests(TestCase):
 
 
     def testSecret(self):
-        self.mgr[u"_system"].current=marker
+        self.mgr[u"_system"][0]=marker
         self.failUnless(self.mgr.secret() is marker)
 
     def testSecretGivenRing(self):
-        self.mgr[u"one"].current=marker
+        self.mgr[u"one"][0]=marker
         self.failUnless(self.mgr.secret(u"one") is marker)
 
     def testSecretUnknownRing(self):
