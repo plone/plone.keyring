@@ -1,4 +1,3 @@
-import types
 from unittest import makeSuite
 from unittest import TestCase
 from unittest import TestSuite
