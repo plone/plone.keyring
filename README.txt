@@ -30,4 +30,7 @@ The key manager is a container for the available keyrings. It always
 contains a default system keyring which is used when no other ring is
 explicitly requested.
 
+Installation
+============
 
+You'll need to register a KeyManager as a persistent utility. On Zope2 with GenericSetup, this can be done by loading the included profile.

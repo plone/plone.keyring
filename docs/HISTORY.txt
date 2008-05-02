@@ -4,6 +4,10 @@ Changelog
 1.1 - unreleased
 ----------------
 
+* Add an optional GenericSetup profile to register the KeyManager as utility.
+  Required for plone.keyring on Plone 3.0.
+  [mj]
+
 
 1.0 - April 21, 2008
 --------------------
