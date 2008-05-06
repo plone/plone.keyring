@@ -4,11 +4,6 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="plone.keyring">
 
-<utility
-    provides="plone.keyring.interfaces.IKeyManager"
-    component=".keymanager.KeyManager"
-    />
-
 <genericsetup:registerProfile
     zcml:condition="installed Products.GenericSetup"
     name="default"
