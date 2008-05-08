@@ -4,6 +4,9 @@ Changelog
 1.2 - unreleased
 ----------------
 
+* Fix registration of the GenericSetup profile.
+  [witsch]
+
 1.1 - May 2, 2008
 -----------------
 
