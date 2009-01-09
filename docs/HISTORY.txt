@@ -4,11 +4,16 @@ Changelog
 1.3 - unreleased
 ----------------
 
+* Specify package dependencies.
+  [hannosch]
+
+
 1.2 - May 8, 2008
 -----------------
 
 * Fix registration of the GenericSetup profile.
   [witsch]
+
 
 1.1 - May 2, 2008
 -----------------
