@@ -4,6 +4,9 @@ Changelog
 2.0 - unreleased
 ----------------
 
+* Updated to use `zope.container` instead of `zope.app.container`.
+  [hannosch]
+
 * Specify package dependencies.
   [hannosch]
 

@@ -1,8 +1,10 @@
 import random
-from zope.interface import implements
+
 from persistent.list import PersistentList
+from zope.interface import implements
+from zope.location.interfaces import IContained
+
 from plone.keyring.interfaces import IKeyring
-from zope.app.container.contained import Contained
 
 def GenerateSecret(length=64):
     secret=""
@@ -12,8 +14,11 @@ def GenerateSecret(length=64):
     return secret
 
 
-class Keyring(PersistentList, Contained):
-    implements(IKeyring)
+class Keyring(PersistentList):
+
+    implements(IKeyring, IContained)
+
+    __parent__ = __name__ = None
 
     def __init__(self, size=5):
         PersistentList.__init__(self)

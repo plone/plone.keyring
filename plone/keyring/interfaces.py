@@ -1,8 +1,9 @@
+from zope.container.constraints import contains
+from zope.container.interfaces import IContainer
 from zope.interface import Attribute
-from zope.app.container.interfaces import IContainer
-from zope.app.container.interfaces import IContained
 from zope.interface.common.sequence import IFiniteSequence
-from zope.app.container.constraints import contains
+from zope.location.interfaces import IContained
+
 
 
 class IKeyManager(IContainer):

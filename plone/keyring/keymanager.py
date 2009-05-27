@@ -1,8 +1,10 @@
-from zope.interface import implements
-from zope.app.container.sample import SampleContainer
 from persistent.mapping import PersistentMapping
+from zope.container.sample import SampleContainer
+from zope.interface import implements
+
 from plone.keyring.interfaces import IKeyManager
 from plone.keyring.keyring import Keyring
+
 
 class KeyManager(SampleContainer):
     implements(IKeyManager)
