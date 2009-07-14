@@ -13,5 +13,13 @@
     provides="Products.GenericSetup.interfaces.EXTENSION"
     for="zope.component.interfaces.IComponentRegistry"
     />
+
+<!-- If GenericSetup is unavailable register with the globalSiteManager --> 
+
+<utility 
+    zcml:condition="not-installed Products.GenericSetup"
+    provides="plone.keyring.interfaces.IKeyManager" 
+    factory=".keymanager.KeyManager" 
+    /> 
   
 </configure>
