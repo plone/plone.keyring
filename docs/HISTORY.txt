@@ -4,9 +4,7 @@ Changelog
 1.3 - unreleased
 ----------------
 
-* Add a conditional ZCML utility registration so this package can be used in
-  pure Zope 2 applications easily.
-  [MatthewWilkes]
+
 
 1.2 - May 8, 2008
 -----------------
