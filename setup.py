@@ -1,17 +1,15 @@
 from setuptools import setup, find_packages
-import os
 
-version = '2.0'
+version = '2.0a1'
 
 setup(name='plone.keyring',
       version=version,
       description="Manage secrets",
       long_description=open("README.txt").read() + "\n" + \
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
+                       open("CHANGES.txt").read(),
       classifiers=[
         "Framework :: Plone",
         "Framework :: Zope2",
-        "Framework :: Zope3",
         "Programming Language :: Python",
         ],
       keywords='',

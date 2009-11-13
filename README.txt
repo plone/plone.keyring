@@ -1,7 +1,7 @@
 Introduction
 ============
 
-*plone.keyring* contains a Zope3 utility that facilitates handling of
+*plone.keyring* contains a Zope utility that facilitates handling of
 secrets in an application. Secrets are very important in modern applications,
 which is why a shared tool to manage them is useful.
 
@@ -33,4 +33,5 @@ explicitly requested.
 Installation
 ============
 
-You'll need to register a KeyManager as a persistent utility. On Zope2 with GenericSetup, this can be done by loading the included profile.
+You'll need to register a KeyManager as a persistent utility. On Zope2 with
+GenericSetup, this can be done by loading the included profile.
