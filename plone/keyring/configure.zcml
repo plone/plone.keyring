@@ -4,14 +4,14 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     i18n_domain="plone.keyring">
 
-<genericsetup:registerProfile
-    zcml:condition="installed Products.GenericSetup"
-    name="default"
-    directory="profiles/default"
-    title="plone.keyring KeyManager registration"
-    description="Registers a persistent plone.keyring KeyManager"
-    provides="Products.GenericSetup.interfaces.EXTENSION"
-    for="zope.component.interfaces.IComponentRegistry"
-    />
-  
+  <genericsetup:registerProfile
+      zcml:condition="installed Products.GenericSetup"
+      name="default"
+      directory="profiles/default"
+      title="plone.keyring KeyManager registration"
+      description="Registers a persistent plone.keyring KeyManager"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="zope.component.interfaces.IComponentRegistry"
+      />
+
 </configure>
