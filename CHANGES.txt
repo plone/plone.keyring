@@ -1,8 +1,11 @@
 Changelog
 =========
 
-2.0b2 - unreleased
-------------------
+2.0 - unreleased
+----------------
+
+- Update package information.
+  [hannosch]
 
 
 2.0b1 - 2010-06-13

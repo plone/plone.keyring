@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '2.0b2'
+version = '2.0'
 
 setup(name='plone.keyring',
       version=version,
@@ -8,12 +8,15 @@ setup(name='plone.keyring',
       long_description=open("README.txt").read() + "\n" + \
                        open("CHANGES.txt").read(),
       classifiers=[
-        "Framework :: Plone",
-        "Framework :: Zope2",
-        "Programming Language :: Python",
+          "Environment :: Web Environment",
+          "Framework :: Plone",
+          "Framework :: Zope2",
+          "License :: OSI Approved :: GNU General Public License (GPL)",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
         ],
       keywords='',
-      author='Wichert Akkerman',
+      author='Plone Foundation',
       author_email='plone-developers@lists.sourceforge.net',
       url='http://pypi.python.org/pypi/plone.keyring',
       license='BSD',
