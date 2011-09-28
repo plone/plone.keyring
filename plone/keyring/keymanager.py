@@ -1,3 +1,4 @@
+import zope.event
 from persistent.mapping import PersistentMapping
 from zope.container.sample import SampleContainer
 from zope.interface import implements
@@ -11,8 +12,11 @@ class KeyManager(SampleContainer):
 
     def __init__(self):
         SampleContainer.__init__(self)
+        subscribers = zope.event.subscribers[:]
+        del zope.event.subscribers[:]
         self[u"_system"]=Keyring()
         self[u"_system"].rotate()
+        zope.event.subscribers[:] = subscribers
 
 
     def _newContainerData(self):
