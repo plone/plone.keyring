@@ -5,6 +5,10 @@ Changelog
 2.0.1 - unreleased
 ------------------
 
+- Use system random when available. This is part of the fix for
+  https://plone.org/products/plone/security/advisories/20121106/24
+  [davisagli]
+
 - Add MANIFEST.in.
   [WouterVH]
 

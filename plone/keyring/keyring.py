@@ -1,17 +1,13 @@
-import random
-
 from persistent.list import PersistentList
 from zope.interface import implements
 from zope.location.interfaces import IContained
 
 from plone.keyring.interfaces import IKeyring
+from plone.keyring import django_random
+
 
 def GenerateSecret(length=64):
-    secret=""
-    for i in range(length):
-        secret+=chr(random.getrandbits(8))
-
-    return secret
+    return django_random.get_random_string(length)
 
 
 class Keyring(PersistentList):
@@ -40,8 +36,3 @@ class Keyring(PersistentList):
     @property
     def current(self):
         return self.data[0]
-
-
-
-
-
