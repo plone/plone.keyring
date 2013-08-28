@@ -1,3 +1,5 @@
+from random import choice
+
 from persistent.list import PersistentList
 from zope.interface import implements
 from zope.location.interfaces import IContained
@@ -27,12 +29,24 @@ class Keyring(PersistentList):
 
     def clear(self):
         for i in range(len(self)):
-            self[i]=None
+            self[i] = None
 
     def rotate(self):
         self.pop()
         self.insert(0, GenerateSecret())
 
+    def fill(self):
+        """
+        add missing keys
+        """
+        for i in range(len(self)):
+            key = self[i]
+            if key is None:
+                self[i] = GenerateSecret()
+
     @property
     def current(self):
         return self.data[0]
+
+    def random(self):
+        return choice([k for k in self.data if k])
