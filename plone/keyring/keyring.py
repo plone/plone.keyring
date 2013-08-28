@@ -1,3 +1,4 @@
+import time
 from random import choice
 
 from persistent.list import PersistentList
@@ -18,6 +19,8 @@ class Keyring(PersistentList):
 
     __parent__ = __name__ = None
 
+    last_rotation = 0
+
     def __init__(self, size=5):
         PersistentList.__init__(self)
         for i in range(size):
@@ -34,6 +37,7 @@ class Keyring(PersistentList):
     def rotate(self):
         self.pop()
         self.insert(0, GenerateSecret())
+        self.last_rotation = time.time()
 
     def fill(self):
         """
@@ -49,4 +53,8 @@ class Keyring(PersistentList):
         return self.data[0]
 
     def random(self):
-        return choice([k for k in self.data if k])
+        """
+        since we could be on a rotation bountry,
+        only rotate one less than the total
+        """
+        return choice([k for k in self.data[:-1] if k])
