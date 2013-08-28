@@ -54,7 +54,7 @@ class Keyring(PersistentList):
 
     def random(self):
         """
-        since we could be on a rotation bountry,
+        since we could be on a rotation boundary,
         only rotate one less than the total
         """
         keys = self.data
