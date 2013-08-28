@@ -57,4 +57,7 @@ class Keyring(PersistentList):
         since we could be on a rotation bountry,
         only rotate one less than the total
         """
-        return choice([k for k in self.data[:-1] if k])
+        keys = self.data
+        if len(keys) > 1:
+            keys = keys[:-1]
+        return choice([k for k in keys if k])

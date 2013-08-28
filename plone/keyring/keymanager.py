@@ -9,18 +9,21 @@ from plone.keyring.keyring import Keyring
 class KeyManager(SampleContainer):
     implements(IKeyManager)
 
-    def __init__(self):
+    def __init__(self, keyring_size=5):
         SampleContainer.__init__(self)
 
-        self[u"_system"] = Keyring()
+        if keyring_size < 1:
+            keyring_size = 5  # prevent not having any keys
+
+        self[u"_system"] = Keyring(keyring_size)
         self[u"_system"].fill()
 
         # to be used with anonymous users
-        self[u'_anon'] = Keyring()
+        self[u'_anon'] = Keyring(keyring_size)
         self[u'_anon'].fill()
 
         # to be used with forms, plone.protect here..
-        self[u'_forms'] = Keyring()
+        self[u'_forms'] = Keyring(keyring_size)
         self[u'_forms'].fill()
 
     def _newContainerData(self):
