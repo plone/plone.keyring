@@ -29,7 +29,7 @@ class KeyManagerTests(TestCase):
 
     def testSystemKeyringCreated(self):
         mgr=KeyManager()
-        self.assertEqual(mgr.keys(), [ u"_system" ])
+        self.assertEqual(mgr.keys(), [u"_anon", u"_forms", u"_system"])
         self.failUnless(mgr[u"_system"].current is not None)
 
 
