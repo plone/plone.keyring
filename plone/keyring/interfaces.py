@@ -22,7 +22,7 @@ class IKeyManager(IContainer):
     def secret(ring=u"_system"):
         """Return the current secret for a given ring. If no ring
         is given the secret for the system ring is returned"""
-        
+
 
 
 class IKeyring(IContained, IFiniteSequence):

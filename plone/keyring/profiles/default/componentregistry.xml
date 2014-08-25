@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <componentregistry>
   <utilities>
-    <utility 
+    <utility
         interface="plone.keyring.interfaces.IKeyManager"
         factory="plone.keyring.keymanager.KeyManager"
         />
