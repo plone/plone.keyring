@@ -1,0 +1,5 @@
+*.pyc
+*.pyo
+/plone.keyring.egg-info/
+/dist/
+
