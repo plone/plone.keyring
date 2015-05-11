@@ -5,7 +5,8 @@ Changelog
 3.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Minor cleanup: whitespace, git ignores.
+  [gforcada, rnix]
 
 
 3.0.0 (2014-04-13)
