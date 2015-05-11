@@ -5,8 +5,8 @@ version = '3.0.1.dev0'
 setup(name='plone.keyring',
       version=version,
       description="Manage secrets",
-      long_description=open("README.txt").read() + "\n" + \
-                       open("CHANGES.txt").read(),
+      long_description=(open("README.rst").read() + "\n" +
+                        open("CHANGES.rst").read()),
       classifiers=[
           "Environment :: Web Environment",
           "Framework :: Plone",
@@ -14,7 +14,7 @@ setup(name='plone.keyring',
           "License :: OSI Approved :: GNU General Public License (GPL)",
           "Operating System :: OS Independent",
           "Programming Language :: Python",
-        ],
+          ],
       keywords='',
       author='Plone Foundation',
       author_email='plone-developers@lists.sourceforge.net',
