@@ -15,7 +15,7 @@ New features:
 
 Bug fixes:
 
-- *add item here*
+- Fix the tests on Python 3 [ale-rt]
 
 
 3.0.2 (2017-08-27)
