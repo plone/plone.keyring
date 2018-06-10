@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-3.0.3 (unreleased)
+3.1.0 (unreleased)
 ------------------
 
 Breaking changes:
@@ -17,6 +17,7 @@ Bug fixes:
 
 - Fix the tests on Python 3 [ale-rt]
 
+- Python 2.6 is no longer supported, use a 3.0.x release if needed [gforcada]
 
 3.0.2 (2017-08-27)
 ------------------

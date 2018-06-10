@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '3.0.3.dev0'
+version = '3.1.0.dev0'
 
 setup(
     name='plone.keyring',
@@ -18,7 +18,6 @@ setup(
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
         ],
     keywords='',
