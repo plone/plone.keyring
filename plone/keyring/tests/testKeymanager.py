@@ -30,12 +30,12 @@ class KeyManagerTests(TestCase):
     def testSystemKeyringCreated(self):
         mgr=KeyManager()
         self.assertEqual(set(mgr), {u"_anon", u"_forms", u"_system"})
-        self.failUnless(mgr[u"_system"].current is not None)
+        self.assertTrue(mgr[u"_system"].current is not None)
 
 
     def testContainerIsPersistent(self):
         mgr=KeyManager()
-        self.failUnless(isinstance(mgr.__dict__["_SampleContainer__data"],
+        self.assertTrue(isinstance(mgr.__dict__["_SampleContainer__data"],
                                    PersistentMapping))
 
 
@@ -109,11 +109,11 @@ class KeyManagerTests(TestCase):
 
     def testSecret(self):
         self.mgr[u"_system"][0]=marker
-        self.failUnless(self.mgr.secret() is marker)
+        self.assertTrue(self.mgr.secret() is marker)
 
     def testSecretGivenRing(self):
         self.mgr[u"one"][0]=marker
-        self.failUnless(self.mgr.secret(u"one") is marker)
+        self.assertTrue(self.mgr.secret(u"one") is marker)
 
     def testSecretUnknownRing(self):
         self.assertRaises(KeyError, self.mgr.secret, u"missing")
