@@ -27,7 +27,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         ],
-    keywords='',
+    keywords='secret key keyring',
     author='Plone Foundation',
     author_email='plone-developers@lists.sourceforge.net',
     url='https://pypi.org/project/plone.keyring',
