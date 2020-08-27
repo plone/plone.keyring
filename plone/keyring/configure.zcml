@@ -11,7 +11,7 @@
       title="plone.keyring KeyManager registration"
       description="Registers a persistent plone.keyring KeyManager"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      for="zope.component.interfaces.IComponentRegistry"
+      for="zope.interface.interfaces.IComponentRegistry"
       />
 
 </configure>
