@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '3.1.4.dev0'
+version = '3.2.0.dev0'
 
 setup(
     name='plone.keyring',
@@ -12,11 +12,11 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 5.1",
         "Framework :: Plone :: 5.2",
+        "Framework :: Plone :: 6.0",
         "Framework :: Plone :: Core",
-        "Framework :: Zope2",
         "Framework :: Zope :: 4",
+        "Framework :: Zope :: 5",
         "License :: OSI Approved :: BSD License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
@@ -24,7 +24,10 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
-        ],
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+    ],
     keywords='secret key keyring',
     author='Plone Foundation',
     author_email='plone-developers@lists.sourceforge.net',
