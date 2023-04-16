@@ -3,3 +3,6 @@
 [meta]
 template = "default"
 commit-id = "2ed8f544"
+
+[dependencies]
+ignores = "['Products.GenericSetup']"
