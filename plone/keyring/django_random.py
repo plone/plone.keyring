@@ -28,7 +28,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
+from hashlib import sha256 as sha
+
 import random
+import time
 
 
 try:
@@ -36,13 +39,6 @@ try:
     using_sysrandom = True
 except NotImplementedError:
     using_sysrandom = False
-
-try:
-    from hashlib import sha256 as sha
-except ImportError:
-    from sha import sha
-
-import time
 
 
 # generated when process started, hard to guess
