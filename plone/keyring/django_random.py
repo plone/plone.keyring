@@ -66,7 +66,5 @@ def get_random_string(
         # time a random string is required. This may change the
         # properties of the chosen random sequence slightly, but this
         # is better than absolute predictability.
-        random.seed(
-            sha(f"{random.getstate()}{time.time()}{SECRET}").digest()
-        )
+        random.seed(sha(f"{random.getstate()}{time.time()}{SECRET}").digest())
     return "".join([random.choice(allowed_chars) for i in range(length)])
