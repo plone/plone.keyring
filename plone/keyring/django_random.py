@@ -65,7 +65,7 @@ def get_random_string(length=12,
         # is better than absolute predictability.
         random.seed(
             sha(
-                "%s%s%s" % (
+                "{}{}{}".format(
                     random.getstate(),
                     time.time(),
                     SECRET)

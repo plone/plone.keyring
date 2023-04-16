@@ -20,7 +20,7 @@ class KeyringTests(TestCase):
 
     def testKeyringStartsEmpty(self):
         ring=Keyring()
-        self.assertEqual(set(list(ring)), set([None]))
+        self.assertEqual(set(list(ring)), {None})
 
     def testIterate(self):
         ring=Keyring()
