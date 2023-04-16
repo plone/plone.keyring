@@ -14,7 +14,6 @@ def GenerateSecret(length=64):
 
 @implementer(IKeyring, IContained)
 class Keyring(PersistentList):
-
     __parent__ = __name__ = None
 
     last_rotation = 0

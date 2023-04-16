@@ -23,19 +23,14 @@ class IKeyManager(IContainer):
         is given the secret for the system ring is returned"""
 
 
-
 class IKeyring(IContained, IFiniteSequence):
     current = Attribute("The current (ie latest) secret in the ring.")
 
     def __init__(size=5):
-        """Construct a new keyring for a specified number of keys.
-        """
+        """Construct a new keyring for a specified number of keys."""
 
     def clear():
-        """Remove all keys from the ring.
-        """
+        """Remove all keys from the ring."""
 
     def rotate():
-        """Add a new secret to the ring, pushing out the oldest secret.
-        """
-
+        """Add a new secret to the ring, pushing out the oldest secret."""

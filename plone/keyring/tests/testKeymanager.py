@@ -8,36 +8,33 @@ from unittest import TestSuite
 from zope.interface.verify import verifyClass
 
 
-marker=[]
+marker = []
 
 
 class KeyManagerTests(TestCase):
     def setUp(self):
-        self.mgr=KeyManager()
+        self.mgr = KeyManager()
         del self.mgr["_system"]
-        self.mgr["_system"]=Keyring()
+        self.mgr["_system"] = Keyring()
         self.mgr["_system"].rotate()
-        self.mgr["one"]=Keyring()
+        self.mgr["one"] = Keyring()
         self.mgr["one"].rotate()
-        self.mgr["two"]=Keyring()
+        self.mgr["two"] = Keyring()
         self.mgr["two"].rotate()
-
 
     def testInterface(self):
         verifyClass(IKeyManager, KeyManager)
 
-
     def testSystemKeyringCreated(self):
-        mgr=KeyManager()
+        mgr = KeyManager()
         self.assertEqual(set(mgr), {"_anon", "_forms", "_system"})
         self.assertTrue(mgr["_system"].current is not None)
 
-
     def testContainerIsPersistent(self):
-        mgr=KeyManager()
-        self.assertTrue(isinstance(mgr.__dict__["_SampleContainer__data"],
-                                   PersistentMapping))
-
+        mgr = KeyManager()
+        self.assertTrue(
+            isinstance(mgr.__dict__["_SampleContainer__data"], PersistentMapping)
+        )
 
     def testClear(self):
         self.mgr.clear()
@@ -45,13 +42,11 @@ class KeyManagerTests(TestCase):
         self.assertNotEqual(set(self.mgr["one"]), {None})
         self.assertNotEqual(set(self.mgr["two"]), {None})
 
-
     def testClearGivenRing(self):
         self.mgr.clear("one")
         self.assertNotEqual(set(self.mgr["_system"]), {None})
         self.assertEqual(set(self.mgr["one"]), {None})
         self.assertNotEqual(set(self.mgr["two"]), {None})
-
 
     def testClearAll(self):
         self.mgr.clear(None)
@@ -59,10 +54,8 @@ class KeyManagerTests(TestCase):
         self.assertEqual(set(self.mgr["one"]), {None})
         self.assertEqual(set(self.mgr["two"]), {None})
 
-
     def testClearUnknownRing(self):
         self.assertRaises(KeyError, self.mgr.clear, "missing")
-
 
     def testRotate(self):
         current_sys = self.mgr["_system"].current
@@ -76,7 +69,6 @@ class KeyManagerTests(TestCase):
         self.assertEqual(self.mgr["two"].current, current_two)
         self.assertEqual(self.mgr["two"][1], None)
 
-
     def testRotateGivenRing(self):
         current_sys = self.mgr["_system"].current
         current_one = self.mgr["one"].current
@@ -88,7 +80,6 @@ class KeyManagerTests(TestCase):
         self.assertEqual(self.mgr["one"][1], current_one)
         self.assertEqual(self.mgr["two"].current, current_two)
         self.assertEqual(self.mgr["two"][1], None)
-
 
     def testRotateAll(self):
         current_sys = self.mgr["_system"].current
@@ -102,23 +93,22 @@ class KeyManagerTests(TestCase):
         self.assertNotEqual(self.mgr["two"].current, current_two)
         self.assertEqual(self.mgr["two"][1], current_two)
 
-
     def testRotateUnknownRing(self):
         self.assertRaises(KeyError, self.mgr.clear, "missing")
 
-
     def testSecret(self):
-        self.mgr["_system"][0]=marker
+        self.mgr["_system"][0] = marker
         self.assertTrue(self.mgr.secret() is marker)
 
     def testSecretGivenRing(self):
-        self.mgr["one"][0]=marker
+        self.mgr["one"][0] = marker
         self.assertTrue(self.mgr.secret("one") is marker)
 
     def testSecretUnknownRing(self):
         self.assertRaises(KeyError, self.mgr.secret, "missing")
 
+
 def test_suite():
-    suite=TestSuite()
+    suite = TestSuite()
     suite.addTest(makeSuite(KeyManagerTests))
     return suite

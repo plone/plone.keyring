@@ -49,9 +49,10 @@ import time
 SECRET = random.randint(0, 1000000)
 
 
-def get_random_string(length=12,
-                      allowed_chars='abcdefghijklmnopqrstuvwxyz'
-                                    'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
+def get_random_string(
+    length=12,
+    allowed_chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+):
     """
     Returns a securely generated random string.
 
@@ -66,10 +67,6 @@ def get_random_string(length=12,
         # properties of the chosen random sequence slightly, but this
         # is better than absolute predictability.
         random.seed(
-            sha(
-                "{}{}{}".format(
-                    random.getstate(),
-                    time.time(),
-                    SECRET)
-                ).digest())
-    return ''.join([random.choice(allowed_chars) for i in range(length)])
+            sha("{}{}{}".format(random.getstate(), time.time(), SECRET)).digest()
+        )
+    return "".join([random.choice(allowed_chars) for i in range(length)])

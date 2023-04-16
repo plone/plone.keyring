@@ -7,7 +7,6 @@ from zope.interface import implementer
 
 @implementer(IKeyManager)
 class KeyManager(SampleContainer):
-
     def __init__(self, keyring_size=5):
         SampleContainer.__init__(self)
 
@@ -18,12 +17,12 @@ class KeyManager(SampleContainer):
         self["_system"].fill()
 
         # to be used with anonymous users
-        self['_anon'] = Keyring(keyring_size)
-        self['_anon'].fill()
+        self["_anon"] = Keyring(keyring_size)
+        self["_anon"].fill()
 
         # to be used with forms, plone.protect here..
-        self['_forms'] = Keyring(keyring_size)
-        self['_forms'].fill()
+        self["_forms"] = Keyring(keyring_size)
+        self["_forms"].fill()
 
     def _newContainerData(self):
         return PersistentMapping()
