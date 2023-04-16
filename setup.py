@@ -35,8 +35,8 @@ setup(
     zip_safe=False,
     python_requires=">=3.8",
     install_requires=[
+        "persistent",
         "setuptools",
-        "ZODB",
         "zope.container",
         "zope.interface",
         "zope.location",
