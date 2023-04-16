@@ -1,12 +1,11 @@
-import time
-from random import choice
-
 from persistent.list import PersistentList
+from plone.keyring import django_random
+from plone.keyring.interfaces import IKeyring
+from random import choice
 from zope.interface import implementer
 from zope.location.interfaces import IContained
 
-from plone.keyring.interfaces import IKeyring
-from plone.keyring import django_random
+import time
 
 
 def GenerateSecret(length=64):

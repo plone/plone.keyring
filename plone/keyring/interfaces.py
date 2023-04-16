@@ -5,7 +5,6 @@ from zope.interface.common.sequence import IFiniteSequence
 from zope.location.interfaces import IContained
 
 
-
 class IKeyManager(IContainer):
     contains("plone.keyring.interfaces.IKeyring")
 

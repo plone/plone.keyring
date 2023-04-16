@@ -1,11 +1,11 @@
-from unittest import makeSuite
-from unittest import TestCase
-from unittest import TestSuite
 from persistent.mapping import PersistentMapping
-from zope.interface.verify import verifyClass
 from plone.keyring.interfaces import IKeyManager
 from plone.keyring.keymanager import KeyManager
 from plone.keyring.keyring import Keyring
+from unittest import makeSuite
+from unittest import TestCase
+from unittest import TestSuite
+from zope.interface.verify import verifyClass
 
 
 marker=[]

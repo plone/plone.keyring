@@ -1,10 +1,12 @@
-import types
+from plone.keyring.interfaces import IKeyring
+from plone.keyring.keyring import Keyring
 from unittest import makeSuite
 from unittest import TestCase
 from unittest import TestSuite
 from zope.interface.verify import verifyClass
-from plone.keyring.interfaces import IKeyring
-from plone.keyring.keyring import Keyring
+
+import types
+
 
 class KeyringTests(TestCase):
     def testInterface(self):
