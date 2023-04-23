@@ -1,9 +1,8 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <componentregistry>
   <utilities>
-    <utility
-        interface="plone.keyring.interfaces.IKeyManager"
-        factory="plone.keyring.keymanager.KeyManager"
-        />
+    <utility factory="plone.keyring.keymanager.KeyManager"
+             interface="plone.keyring.interfaces.IKeyManager"
+    />
   </utilities>
 </componentregistry>

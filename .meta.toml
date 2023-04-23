@@ -1,0 +1,8 @@
+# Generated from:
+# https://github.com/plone/meta/tree/master/config/default
+[meta]
+template = "default"
+commit-id = "2ed8f544"
+
+[dependencies]
+ignores = "['Products.GenericSetup']"

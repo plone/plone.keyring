@@ -28,28 +28,27 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
+from hashlib import sha256 as sha
+
 import random
+import time
+
+
 try:
     random = random.SystemRandom()
     using_sysrandom = True
 except NotImplementedError:
     using_sysrandom = False
 
-try:
-    from hashlib import sha256 as sha
-except ImportError:
-    from sha import sha
-
-import time
-
 
 # generated when process started, hard to guess
 SECRET = random.randint(0, 1000000)
 
 
-def get_random_string(length=12,
-                      allowed_chars='abcdefghijklmnopqrstuvwxyz'
-                                    'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'):
+def get_random_string(
+    length=12,
+    allowed_chars="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+):
     """
     Returns a securely generated random string.
 
@@ -63,11 +62,5 @@ def get_random_string(length=12,
         # time a random string is required. This may change the
         # properties of the chosen random sequence slightly, but this
         # is better than absolute predictability.
-        random.seed(
-            sha(
-                "%s%s%s" % (
-                    random.getstate(),
-                    time.time(),
-                    SECRET)
-                ).digest())
-    return ''.join([random.choice(allowed_chars) for i in range(length)])
+        random.seed(sha(f"{random.getstate()}{time.time()}{SECRET}").digest())
+    return "".join([random.choice(allowed_chars) for i in range(length)])

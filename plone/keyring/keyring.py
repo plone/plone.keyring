@@ -1,12 +1,11 @@
-import time
-from random import choice
-
 from persistent.list import PersistentList
+from plone.keyring import django_random
+from plone.keyring.interfaces import IKeyring
+from random import choice
 from zope.interface import implementer
 from zope.location.interfaces import IContained
 
-from plone.keyring.interfaces import IKeyring
-from plone.keyring import django_random
+import time
 
 
 def GenerateSecret(length=64):
@@ -15,7 +14,6 @@ def GenerateSecret(length=64):
 
 @implementer(IKeyring, IContained)
 class Keyring(PersistentList):
-
     __parent__ = __name__ = None
 
     last_rotation = 0
@@ -26,8 +24,7 @@ class Keyring(PersistentList):
             self.append(None)
 
     def __iter__(self):
-        for item in self.data:
-            yield item
+        yield from self.data
 
     def clear(self):
         for i in range(len(self)):
