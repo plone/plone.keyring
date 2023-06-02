@@ -1,7 +1,6 @@
 Introduction
 ============
 
-
 *plone.keyring* contains a Zope utility that facilitates handling of
 secrets in an application. Secrets are very important in modern applications,
 which is why a shared tool to manage them is useful.
