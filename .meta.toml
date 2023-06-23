@@ -1,8 +1,9 @@
 # Generated from:
 # https://github.com/plone/meta/tree/master/config/default
+# See the inline comments on how to expand/tweak this configuration file
 [meta]
 template = "default"
-commit-id = "2ed8f544"
+commit-id = "7723aeaf"
 
-[dependencies]
-ignores = "['Products.GenericSetup']"
+[pyproject]
+dependencies_ignores = "['Products.GenericSetup']"
