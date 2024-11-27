@@ -2,7 +2,7 @@ from persistent.mapping import PersistentMapping
 from plone.keyring.interfaces import IKeyManager
 from plone.keyring.keymanager import KeyManager
 from plone.keyring.keyring import Keyring
-from unittest import makeSuite
+from unittest import defaultTestLoader
 from unittest import TestCase
 from unittest import TestSuite
 from zope.interface.verify import verifyClass
@@ -110,5 +110,5 @@ class KeyManagerTests(TestCase):
 
 def test_suite():
     suite = TestSuite()
-    suite.addTest(makeSuite(KeyManagerTests))
+    suite.addTest(defaultTestLoader.loadTestsFromTestCase(KeyManagerTests))
     return suite
