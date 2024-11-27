@@ -1,6 +1,6 @@
 from plone.keyring.interfaces import IKeyring
 from plone.keyring.keyring import Keyring
-from unittest import defaultTestLoader
+from unittest import makeSuite
 from unittest import TestCase
 from unittest import TestSuite
 from zope.interface.verify import verifyClass
@@ -60,5 +60,5 @@ class KeyringTests(TestCase):
 
 def test_suite():
     suite = TestSuite()
-    suite.addTest(defaultTestLoader.loadTestsFromTestCase(KeyringTests))
+    suite.addTest(makeSuite(KeyringTests))
     return suite
