@@ -1,9 +1,10 @@
-include *.rst
-
 recursive-include docs *
 recursive-include src *
 
-global-exclude *pyc
+include *.rst
 include pyproject.toml
+
+global-exclude *pyc
 recursive-exclude news *
+
 exclude news
