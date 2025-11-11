@@ -31,7 +31,6 @@ setup(
     python_requires=">=3.10",
     install_requires=[
         "persistent",
-        "setuptools",
         "zope.container",
         "zope.interface",
         "zope.location",
