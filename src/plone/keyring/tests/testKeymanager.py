@@ -7,7 +7,6 @@ from unittest import TestCase
 from unittest import TestSuite
 from zope.interface.verify import verifyClass
 
-
 marker = []
 
 

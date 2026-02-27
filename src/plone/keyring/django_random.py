@@ -33,7 +33,6 @@ from hashlib import sha256 as sha
 import random
 import time
 
-
 try:
     random = random.SystemRandom()
     using_sysrandom = True
